@@ -66,7 +66,7 @@ void cardSet::saveSet(const std::string input)
 {
 	std::fstream file;
 	file.open(input, std::ios::out | std::ios::trunc);
-	for (int cnt = 1; myCards.size() > cnt; ++cnt)
+	for (int cnt = 0; myCards.size() > cnt; ++cnt)
 	{
 		file << myCards[cnt].printName() << std::endl << myCards[cnt].printAmount() << std::endl;
 	}
@@ -98,6 +98,34 @@ card cardSet::searchSet(const std::string item, int hi, int low)
 		}
 	}
 	
+}
+void cardSet::sortSet()
+{
+	int holder;
+	card temp;
+	std::cout << "start of sort\n";
+	for (int cnt = 1; cnt < myCards.size(); ++cnt)
+	{
+		std::cout << "First loop sort\n";
+		holder = cnt;
+		std::string holderName = myCards[holder].printName(), compareName = myCards[holder - 1].printName();
+		while (holder > 0 && holderName.compare(myCards[holder - 1].printName()) <0)
+		{
+			std::cout << holder<< " \n";
+			std::cout << "2nd loop\n";
+			temp = myCards[holder];
+			myCards[holder] = myCards[holder - 1];
+			myCards[holder - 1] = temp;
+			std::cout << myCards[holder].printName() << " " << myCards[holder - 1].printName();
+			--holder;
+			holderName = myCards[holder].printName();
+			
+		}
+	}
+	for (int cnt = 0; cnt < myCards.size(); ++cnt)
+	{
+		std::cout << std::endl << myCards[cnt].printName() ;
+	}
 }
 int cardSet::printSize()
 {
