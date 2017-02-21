@@ -13,7 +13,7 @@ public:
 	//void removeCard();
 	void printSet();
 	void saveSet(const std::string);
-	//void sortSet();
+	void sortSet();
 	card searchSet(const std::string, int, int);
 	int printSize();
 
