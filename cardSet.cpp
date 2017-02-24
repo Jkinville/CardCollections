@@ -39,6 +39,8 @@ void cardSet::addCard()
 		card newCard;
 		std::cout << "Please enter the card name: ";
 		std::string name;
+		std::cin.clear();
+		std::cin.ignore(1000, '\n');
 		getline(std::cin, name);
 		newCard.setName(name);
 		std::cout << "Enter how many are in the collection: ";
@@ -46,14 +48,20 @@ void cardSet::addCard()
 		std::cin >> amount;
 		newCard.setAmount(amount);
 		std::cout << "Please enter the cards current location: ";
-		std::cin.ignore(1000, '\n');
 		std::string loc;
+		std::cin.clear();
+		std::cin.ignore(1000, '\n');
 		std::cin >> loc;
 		newCard.setLoc(loc);
 		myCards.push_back(newCard);
+		std::cin.clear();
+		std::cin.ignore(1000, '\n');
 		std::cout << "Continue? y/n: ";
 		std::cin >> contninue;
+		std::cin.clear();
+		std::cin.ignore(1000, '\n');
 	} while (contninue == 'y');
+	
 }
 void cardSet::printSet()
 {
@@ -70,9 +78,11 @@ void cardSet::saveSet(const std::string input)
 	{
 		file << myCards[cnt].printName() << std::endl << myCards[cnt].printAmount() << std::endl;
 	}
+	file.close();
 }
-card cardSet::searchSet(const std::string item, int hi, int low)
+card cardSet::searchSet(const std::string item)
 {
+	int hi = myCards.size(), low = 0;
 	bool found = false;
 	while (found == false)
 	{
@@ -80,7 +90,7 @@ card cardSet::searchSet(const std::string item, int hi, int low)
 		if (hi < low)
 		{
 			std::cout << item << " not found, returning to menu";
-			return myCards[0];
+			return myCards[myCards.size()-1];
 		}
 		int midpoint = low + (hi - low) / 2;
 		std::string newName = myCards[midpoint].printName();
@@ -122,10 +132,7 @@ void cardSet::sortSet()
 			
 		}
 	}
-	for (int cnt = 0; cnt < myCards.size(); ++cnt)
-	{
-		std::cout << std::endl << myCards[cnt].printName() ;
-	}
+	saveSet(setName);
 }
 int cardSet::printSize()
 {
@@ -133,4 +140,6 @@ int cardSet::printSize()
 }
 cardSet::~cardSet()
 {
+	myCards.clear();
+	std::cout << myCards.size();
 }
