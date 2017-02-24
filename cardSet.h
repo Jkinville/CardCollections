@@ -14,7 +14,7 @@ public:
 	void printSet();
 	void saveSet(const std::string);
 	void sortSet();
-	card searchSet(const std::string, int, int);
+	card searchSet(const std::string);
 	int printSize();
 
 private:
