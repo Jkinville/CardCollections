@@ -9,6 +9,11 @@ Update: 2/22/2017
 Added basic search and sort functionality. Implemented search in the form of bianry search, since the data will always be sorted before beaing searched this has the best time
 complexity. For a sort function I used an insertion sort, since the arrays will almost always be sorted outside of starting a new array I think this had the best time 
 complexity, I would like to implement a way to sort new arrays though. Maybe sort after every new item is added? 
+Update:2/23/2017
+Added the menu functions. With this update the program has all its basic functionality in place, it still has a few bugs and hiccups I want to iron out, but for all intents 
+and purposes this is the beta version of this program.  I still have a long way to go as from this point forward I need to test features and work out bugs, but this is a great 
+start.
+ 
 Planned changes:
 Multiplatform GUI with Qt
 Improved search and sorting performance
